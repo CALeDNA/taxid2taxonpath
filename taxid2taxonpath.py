@@ -124,6 +124,22 @@ def main(argv):
             ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
         elif curr.Rank == "forma specialis":
             ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "forma":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "isolate":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "genotype":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "clade":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "morph":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "serotype":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "serogroup":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
+        elif curr.Rank == "biotype":
+            ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
         elif curr.Rank == "species group":
             ranks_taxonomy[curr.TaxonId] = ranks_lookup['species']
         elif curr.Rank == "superfamily":
@@ -198,7 +214,10 @@ def main(argv):
         if int(taxid[curr_read]) == 0:
             lineage = 'unassigned'
         else:
-            path = taxid_taxonomy[int(taxid[curr_read])]
+            try:
+                path = taxid_taxonomy[int(taxid[curr_read])]
+            except KeyError as e:
+                continue
             lowest_rank = ranks_taxonomy[int(taxid[curr_read])]+1
             lineage = ';'.join(path[0:lowest_rank])
         # for i in enumerate(taxid_taxonomy[int(taxid[curr_read]):
