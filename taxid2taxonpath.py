@@ -208,7 +208,7 @@ def main(argv):
                 lineage_complete = True
         taxid_taxonomy[node.TaxonId] = lineage
     missing_taxonomy = ['NA'] * len(ranks_lookup)
-    o = open(outputfile, 'w')
+    o = open(outputfile, 'w+')
     for curr_read in taxid:
         #import pdb; pdb.set_trace()
         if int(taxid[curr_read]) == 0:
@@ -216,10 +216,10 @@ def main(argv):
         else:
             try:
                 path = taxid_taxonomy[int(taxid[curr_read])]
+                lowest_rank = ranks_taxonomy[int(taxid[curr_read])]+1
+                lineage = ';'.join(path[0:lowest_rank])
             except KeyError as e:
-                continue
-            lowest_rank = ranks_taxonomy[int(taxid[curr_read])]+1
-            lineage = ';'.join(path[0:lowest_rank])
+                lineage = 'unassigned'
         # for i in enumerate(taxid_taxonomy[int(taxid[curr_read]):
         #    lineage = ';'.join(taxid_taxonomy[
         #lineage = ';'.join(taxid_taxonomy[int(taxid[curr_read])])
