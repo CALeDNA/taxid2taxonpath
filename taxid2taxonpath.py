@@ -21,7 +21,7 @@ def main(argv):
     inputfile = ''
     mergednodes = ''
     deletednodes = ''
-    output_ranks = ['superkingdom', 'kingdom', 'phylum',
+    output_ranks = ['superkingdom', 'phylum',
                     'class', 'order', 'family', 'genus', 'species']
     col = 3
     read = 2
@@ -172,10 +172,6 @@ def main(argv):
             print("help\n")
             print(curr.TaxonId)
             ranks_taxonomy[curr.TaxonId] = ranks_lookup['order']
-        elif curr.Rank == "kingdom":
-            print("kingdom")
-            print(curr.TaxonId)
-            ranks_taxonomy[curr.TaxonId] = ranks_lookup['kingdom']
         elif curr.Rank == "superkingdom":
             print("superkingdom")
             print(curr.TaxonId)
