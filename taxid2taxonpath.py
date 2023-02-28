@@ -214,6 +214,9 @@ def main(argv):
                 path = taxid_taxonomy[int(taxid[curr_read])]
                 lowest_rank = ranks_taxonomy[int(taxid[curr_read])]+1
                 lineage = ';'.join(path[0:lowest_rank])
+                if(lowest_rank<7):
+                    missing = ';'.join(['NA'] * ( len(output_ranks) - lowest_rank ))
+                    lineage += ';' + missing
             except KeyError as e:
                 lineage = 'unassigned'
         # for i in enumerate(taxid_taxonomy[int(taxid[curr_read]):
