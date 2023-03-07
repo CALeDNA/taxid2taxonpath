@@ -207,7 +207,9 @@ def main(argv):
     o = open(outputfile, 'w+')
     for curr_read in taxid:
         #import pdb; pdb.set_trace()
-        if int(taxid[curr_read]) == 0:
+        if taxid[curr_read] == 'N/A':
+            lineage = 'unassigned'
+        elif int(taxid[curr_read]) == 0:
             lineage = 'unassigned'
         else:
             try:
