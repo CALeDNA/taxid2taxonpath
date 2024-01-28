@@ -199,7 +199,7 @@ def main(argv):
             elif curr.TaxonId in taxid_taxonomy:
                 #import pdb; pdb.set_trace()
                 for level in range(0, len(lineage)):
-                    if (taxid_taxonomy[curr.TaxonId][level] is not 'NA') and (lineage[level] is 'NA'):
+                    if (taxid_taxonomy[curr.TaxonId][level] != 'NA') and (lineage[level] == 'NA'):
                         lineage[level] = taxid_taxonomy[curr.TaxonId][level]
                 lineage_complete = True
         taxid_taxonomy[node.TaxonId] = lineage
